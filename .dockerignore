@@ -1,0 +1,7 @@
+Unit6/logs/*.log
+Unit6/static/uploads
+Unit6/uploads
+Unit6/*.db
+Unit6/uploads/**/*
+.ctfd_secret_key
+.data

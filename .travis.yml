@@ -1,0 +1,20 @@
+language: python
+services:
+    - mysql
+    - postgresql
+env:
+    - TESTING_DATABASE_URL='mysql+pymysql://root@localhost/unitsix'
+    - TESTING_DATABASE_URL='sqlite://'
+    - TESTING_DATABASE_URL='postgres://postgres@localhost/unitsix'
+python:
+    - 2.7
+    - 3.6
+install:
+    - pip install -r development.txt
+before_script:
+    - psql -c 'create database unitsix;' -U postgres
+script:
+    - pep8 --ignore E501,E712 Unit6/ tests/
+    - nosetests -v -d --with-randomly
+after_success:
+    - codecov
